@@ -18,8 +18,8 @@ public class MainTest {
 		remoteControllers[2] = robot;
 		
 		//반복문 
-		for (int i = 0; i < remoteControllers.length; i++) {
-			remoteControllers[i].turnOn();
+		for (int i = 0; i < remoteControllers.length; i++) {  //i는 0부터 시작하고 리모트컨드롤러의 크기만큼 i는 +1씩한다.
+			remoteControllers[i].turnOn();                   
 		}
 		System.out.println("=================");
 		for (int i = 0; i < remoteControllers.length; i++) {
