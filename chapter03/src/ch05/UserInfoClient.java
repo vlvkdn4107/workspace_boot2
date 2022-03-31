@@ -1,4 +1,4 @@
-package ch05;
+ package ch05;
 
 import java.util.Scanner;
 
@@ -60,7 +60,7 @@ public class UserInfoClient {
 		//스캐너 사용
 		
 		String str = "oracle";
-		
+		//dbType으로 한번 해보기 ch12 참고
 		
 		if(userinput.equals(MYSQL)) {//유저가 입력만 값이 MYSQL와 문자열이 같으면~~
 		   dao = new UserInfoMySqlDao();			
