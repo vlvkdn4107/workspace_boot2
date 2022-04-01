@@ -4,6 +4,23 @@ import java.util.ArrayList;
 
 public class BookArrayList implements BookService {
 
+	//기본생성자
+	public BookArrayList() {
+		Book book1 = new Book(1, "홍길동1", "홍가1");
+		Book book2 = new Book(2, "홍길동2", "홍가2");
+		Book book3 = new Book(3, "홍길동3", "홍가3");
+		Book book4 = new Book(4, "홍길동4", "홍가4");
+		Book book5 = new Book(5, "홍길동5", "홍가5");
+//		BookClient.serialBookNumber;
+		books.add(book1);
+		books.add(book2);
+		books.add(book3);
+		books.add(book4);
+		books.add(book5);
+	}
+	
+	
+	
 	/**
 	 * Book 객체를 ArrayList 자료 구조에 저장하기
 	 */

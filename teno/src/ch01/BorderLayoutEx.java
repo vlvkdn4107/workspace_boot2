@@ -13,7 +13,7 @@ public class BorderLayoutEx extends JFrame{
 	private JButton button2;
 	private JButton button3;
 	//배치관리자
-	private BorderLayour borderLayout;
+	private BorderLayoutEx borderLayout;
 	
 	public BorderLayoutEx() {
 		setTitle("테스트"); //super 생략 가능
@@ -35,7 +35,7 @@ public class BorderLayoutEx extends JFrame{
 	}
 	private void setInitLayout() {
 		this.setLayout((LayoutManager) borderLayout);
-		this.add(button1, BorderLayout.NORTH);
+		this.add(button1, bo.NORTH);
 		this.add(button2, BorderLayout.SOUTH);
 		this.add(button3, BorderLayout.CENTER);
 	}

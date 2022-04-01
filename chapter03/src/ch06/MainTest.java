@@ -3,6 +3,14 @@ package ch06;
 public class MainTest {
 
 	public static void main(String[] args) {
+		
+		try {
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		
 		Book book1 = new Book(1, "흐르는 강물처럼");
 		Book book2 = new Book(2, "사피엔스");
 		Book book3 = new Book(3, "흐르는 강물처럼");

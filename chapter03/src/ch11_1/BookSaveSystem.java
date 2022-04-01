@@ -2,7 +2,7 @@ package ch11_1;
 
 import java.util.Scanner;
 
-public class MainTest {
+public class BookSaveSystem {
 
 	public static void main(String[] args) {
 
@@ -14,8 +14,15 @@ public class MainTest {
 		Scanner scan = new Scanner(System.in);
 		String selectedMenu = "";
 
+		String pwd ="1234";
+		boolean isOk = false;
 		// do while문 사용
+		
 		do {
+//			if() {
+//				
+//			}
+			
 			System.out.println("-----------------------------------------------------------------");
 			System.out.println("| 1. 책 생성 2. 책 조회 3. 책 삭제 4. 책 전체 조회 5. 책 수정 0. 프로그램 종료|");
 			System.out.println("-----------------------------------------------------------------");
