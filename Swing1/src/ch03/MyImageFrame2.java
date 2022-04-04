@@ -78,6 +78,9 @@ public class MyImageFrame2 extends JFrame{
 		
 		
 	}//end of main
+	public void addEventListenner() {
+		System.out.println("브렌치를 만들었습니다.");
+	}
 	
 	
 }
