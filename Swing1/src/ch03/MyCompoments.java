@@ -31,7 +31,7 @@ public class MyCompoments extends JFrame{
 	private void initDate() { //초기화하는 부분
 		setTitle("컴포넌트 연습");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(800,800);
+		setSize(400,500);
 		
 		jPanel = new JPanel();
 		
@@ -41,7 +41,7 @@ public class MyCompoments extends JFrame{
 		
 		
 		button = new JButton("button");
-		label = new JLabel("");
+		label = new JLabel("라벨");
 		textfield = new JTextField("아이디",20);
 		
         passwordField = new JPasswordField("비밀번호",20);
@@ -62,6 +62,8 @@ public class MyCompoments extends JFrame{
 	    jPanel.add(checkBox);
 	    }
 	
-
+public static void main(String[] args) {
+	new MyCompoments();
+}
 	
 }
