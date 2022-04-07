@@ -22,13 +22,20 @@ public class MyMiniGame extends JFrame {
 	BufferedImage bgimage;
 	BufferedImage imgIcon1;
 	BufferedImage imgIcon2;
+	
 	JButton button1;
 	JButton button2;
+	
 	JPanel jPanel;
+	
 	private CustomJpanel customJpanel;
+	
 	int image3XPosition = 0;
-	int xPoint = 200;
-	int yPoint = 200;
+	
+	int xPoint;
+	int yPoint;
+	
+	private boolean isThread = true;
 
 	public MyMiniGame() {
 		initData();
@@ -41,7 +48,7 @@ public class MyMiniGame extends JFrame {
 	}
 
 	private void initData() {
-		setSize(600, 700);
+		setSize(600, 620);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		// 파일 가져오기 todo
@@ -60,55 +67,75 @@ public class MyMiniGame extends JFrame {
 		button2 = new JButton("시작!");
 
 //		Dimension dimension = new Dimension(600,50);
-		jPanel.setSize(600,50);
+		
 		
 		jPanel.setBackground(Color.gray);
 		
 	}
 
 	private void setIninLayout() {
-		setVisible(true);
 		
-		add(jPanel, BorderLayout.SOUTH);
-		add(customJpanel);
-		customJpanel.add(jPanel);
 		jPanel.add(button1);
 		jPanel.add(button2);
+		
+		
+		add(jPanel, BorderLayout.SOUTH);
+		add(customJpanel, BorderLayout.CENTER);
+		setVisible(true);
+		
+		this.requestFocusInWindow();
 		
 		
 
 	}
 
 	private void addEventListener() {
-
-		button1.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("버튼 누름");
-				
-			}
-		});
-
+//   button1.addActionListener(this);
+//   button2.addActionListener(this);
 		this.addKeyListener(new KeyAdapter() {
-			@Override
 			public void keyPressed(KeyEvent e) {
-				// 여기서는 이미지 2번을 키 이벤트를 받아서 동작 시켜주세요
-
 				int keyCode = e.getKeyCode();
-				if (keyCode == KeyEvent.VK_UP) {
-					System.out.println("ㅇㄴㅁㅇㅁㄴ");
-					yPoint = (yPoint < 0) ? 0 : yPoint - 10;
-				} else if (keyCode == KeyEvent.VK_DOWN) {
-					yPoint = (yPoint > 400) ? 400 : yPoint + 10;
-				} else if (keyCode == KeyEvent.VK_LEFT) {
-					xPoint = (xPoint > 420) ? 420 : xPoint - 10;
-				} else if (keyCode == KeyEvent.VK_RIGHT) {
-					xPoint = (xPoint < 0) ? 0 : xPoint + 10;
+				System.out.println("키이벤드 o");
+				switch(keyCode) {
+				case KeyEvent.VK_UP:
+					yPoint -=10;
+					break;
+				case KeyEvent.VK_DOWN:
+					yPoint +=10;
+					break;
+				case KeyEvent.VK_LEFT:
+					xPoint -=10;
+					break;
+				case KeyEvent.VK_RIGHT:
+					xPoint +=10;
+					break;
 				}
-
+				repaint();
 			}
 		});
+		this.requestFocusInWindow();
+			
+		
+		
+
+		
+//				if (keyCode == KeyEvent.VK_UP) {
+//					System.out.println("ㅇㄴㅁㅇㅁㄴ");
+//					yPoint = (yPoint < 0) ? 0 : yPoint - 10;
+//				} else if (keyCode == KeyEvent.VK_DOWN) {
+//					yPoint = (yPoint > 400) ? 400 : yPoint + 10;
+//				} else if (keyCode == KeyEvent.VK_LEFT) {
+//					xPoint = (xPoint > 420) ? 420 : xPoint - 10;
+//				} else if (keyCode == KeyEvent.VK_RIGHT) {
+//					xPoint = (xPoint < 0) ? 0 : xPoint + 10;
+//				}else if(keyCode == 81) {
+//					yPoint = (yPoint > 400) ? 400 : yPoint + 50;
+//				}else if(keyCode == 87) {
+//					yPoint = (yPoint < 0) ? 0 : yPoint - 50;
+//				}
+           
+		
+		
 	}
 
 	private class CustomJpanel extends JPanel implements Runnable {
@@ -117,9 +144,7 @@ public class MyMiniGame extends JFrame {
 		protected void paintComponent(Graphics g) {
 
 			super.paintComponent(g);
-			// 이미지를 그리기 3개 TODO
-
-			
+			// 이미지를 그리기 3개 TODO		
 			g.drawImage(bgimage, 0, 0, 600, 600, null );
 			g.drawImage(imgIcon2, xPoint, yPoint, 100, 100, null);
 			g.drawImage(imgIcon1, image3XPosition, 420, 100, 100, null);
@@ -152,6 +177,7 @@ public class MyMiniGame extends JFrame {
 						direction = true;
 					}
 					
+					System.out.println("while 작동o");
 					Thread.sleep(100);
 					repaint();
 
@@ -164,6 +190,7 @@ public class MyMiniGame extends JFrame {
 		}
 
 	}
+	
 
 	public static void main(String[] args) {
 		new MyMiniGame();
