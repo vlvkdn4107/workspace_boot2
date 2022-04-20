@@ -279,5 +279,8 @@ public class Player extends JLabel implements Moveable {
 		}).start();
 
 	}
-
+  private class enemy  {
+	  
+	  
+  }
 }

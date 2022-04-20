@@ -65,7 +65,7 @@ public class MiniGame extends JFrame implements ActionListener {
 		// 이미지파일을 미리 메모리에 올리기
 		try {
 			bgImage = ImageIO.read(new File("images/backgroundMap.png"));
-			playerImageL = ImageIO.read(new File("images/bear.png"));
+			playerImageL = ImageIO.read(new File("images/playerL.png"));
 			playerImageR = ImageIO.read(new File("images/playerR.png"));
 			playerImage = playerImageR;
 

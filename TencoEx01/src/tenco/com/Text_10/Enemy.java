@@ -47,6 +47,7 @@ public class Enemy extends JLabel implements Runnable{
 	boolean direcation = true;
 	System.out.println("111111");
 		while(true) {
+			System.out.println("321");
 		   if(isThread) {
 			   if(direcation) {
 				   x += 10;
@@ -58,7 +59,7 @@ public class Enemy extends JLabel implements Runnable{
 				   enemyL = enemyR;
 			   }
 			   try {
-				Thread.sleep(40);
+				Thread.sleep(70);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

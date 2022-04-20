@@ -13,11 +13,12 @@ public class BackgroundPlayerService implements Runnable {
 
 	private BufferedImage image;
 	private Player player;
-	private Enemy enemy;
+//	private Enemy enemy;
 
 	public BackgroundPlayerService(Player player ) {
 		this.player = player; // 포함관계 시킴
-		
+//		Enemy enemy = new Enemy();
+//		this.enemy = enemy;
 
 		try {
 			image = ImageIO.read(new File("images/backgroundMapService.png"));

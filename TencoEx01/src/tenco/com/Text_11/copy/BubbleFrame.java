@@ -112,6 +112,8 @@ public class BubbleFrame extends JFrame {
 
 	public static void main(String[] args) {
 		new BubbleFrame();
+		
+		
 	}
 
 }

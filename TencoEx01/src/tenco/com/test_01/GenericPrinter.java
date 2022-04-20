@@ -1,4 +1,4 @@
-package tenco.com.test_01;
+ package tenco.com.test_01;
 
 public class GenericPrinter<T> {
     //T라는 대체문자를 사용한다, E- element, K - key, V - value(사실 아무 문자나 상관없음)

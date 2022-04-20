@@ -1,5 +1,6 @@
 package ch01;
 
+import java.awt.BorderLayout;
 import java.awt.LayoutManager;
 
 import javax.swing.JButton;
@@ -11,16 +12,16 @@ public class BorderLayoutEx1 extends JFrame{
 	private JButton button1;
 	private JButton button2;
 	private JButton button3;
-	//배치관리자
+	//諛곗튂愿�由ъ옄
 	private Border borderLayout;
 	
 	public BorderLayoutEx1() {
-		setTitle("테스트"); //super 생략 가능
+		setTitle("�뀒�뒪�듃"); //super �깮�왂 媛��뒫
 		setSize(500,500);
 		setVisible(true);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//주소창을 닫으면 콘솔창도 종료가된다.//클래스이름.
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//二쇱냼李쎌쓣 �떕�쑝硫� 肄섏넄李쎈룄 醫낅즺媛��맂�떎.//�겢�옒�뒪�씠由�.
 		
-		//객체생성할때 메서드를 호출해라
+		//媛앹껜�깮�꽦�븷�븣 硫붿꽌�뱶瑜� �샇異쒗빐�씪
 		initDate();
 		setInitLayout();
 	}

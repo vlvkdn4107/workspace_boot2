@@ -12,6 +12,7 @@ public class BubbleFrame extends JFrame {
 	private JLabel backgroundMap;
 	// 참조타입으로 불러오기
 	private Player player;
+//	private Enemy enemy;
 
 	public BubbleFrame() {
 		initObject();
@@ -27,7 +28,8 @@ public class BubbleFrame extends JFrame {
 		// 초기화 시키기
 		player = new Player();// 생성을하고
 		add(player);// 넣고
-
+//        enemy = new Enemy();
+//        add(enemy);
 	}
 
 	private void initSetting() {
