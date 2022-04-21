@@ -26,8 +26,6 @@ public class MainTest3 {
 //			}
 			while((i = fis.read(bs, 1, 5)) !=-1) {//1번쨰 부터 5번쨰 바이트 까지
 				for(int j = 0; j < i; j++) {					
-//					System.out.println("i :" + i);
-//					System.out.println("j :" + j);
 					System.out.println((char)bs[j]);
 				}
 				System.out.println("i :" + i + "바이트 읽음");

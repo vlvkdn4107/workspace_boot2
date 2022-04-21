@@ -21,7 +21,10 @@ public class MainTest1 {
 			System.out.println((char)fis.read());// A 97
 			System.out.println((char)fis.read());// B 98
 			System.out.println((char)fis.read());// C 99
+			System.out.println((char)fis.read());
+			System.out.println(fis.read());// 아무것도 없으면 -1
 			System.out.println((char)fis.read());// 아무것도 없으면 -1 형변환 해서 출력하면 아무것도 안뜬다
+			
 		} catch (FileNotFoundException e) {
 			System.out.println("파일이없습니다");
 		} catch (IOException e) {

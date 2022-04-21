@@ -21,15 +21,9 @@ public class MainTest3 {
 		try(fos){
 			byte[] bs = new byte[26];
 			byte data = 65;//D
-			int i;
 			//배열 A-Z까지 데이터를 담는다
-			while((i = fos.write(bs[0], 5, 21)) != -1) {
-			for (int j = 0; j < bs.length; j++) {
-				bs[26] = data;
-				data++;
-			}
-			//배열에 담겨있는 데이터를 한꺼번에 출력
-			fos.write(bs);
+			while(true) {			
+				fos.write(bs, data, 22);
 			}
 		}catch(Exception e){
 			e.printStackTrace();
