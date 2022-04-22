@@ -80,7 +80,7 @@ public class Test extends JFrame{
 			public void actionPerformed(ActionEvent e) {			    
 				 try {
 					 String file = "test.txt";		
-						String text = textArea.getText().toString();
+						String text = textArea.getText();
 						BufferedWriter bw = new BufferedWriter(new FileWriter(file,true));
 						
 						bw.write(text);
