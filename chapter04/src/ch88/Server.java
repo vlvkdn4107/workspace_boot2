@@ -208,11 +208,11 @@ public class Server extends JFrame implements ActionListener {
 
 				// 자신에게 기존 사용자들을 알린다.
 				for (int i = 0; i < vc.size(); i++) {//유저
-					UserInfomation uinf = vc.elementAt(i);
+					UserInfomation uinf = vc.elementAt(i);//get으로 사용해도됨
 					sendmessage("OldUser/" + uinf.nickName);
 				}
 				for (int i = 0; i < vc_room.size(); i++) {//방
-					RoomInfomation room = vc_room.elementAt(i);
+					RoomInfomation room = vc_room.get(i);//get으로 사용해도됨
 					sendmessage("OldRoom/" + room.roomName);
 				}
 

@@ -392,6 +392,7 @@ public class Client extends JFrame implements ActionListener {
 			sendmessage("Chatting/" + my_roomName + "/"
 					+ chatting_tf.getText().trim());
 		} else if (e.getSource() == sendNote_btn) {
+			
 			System.out.println("쪽지보내기버튼 클릭");
 			String user = (String) totalList_lst.getSelectedValue();
 			if (user == null) {
@@ -402,6 +403,7 @@ public class Client extends JFrame implements ActionListener {
 			if (note != null) {
 				sendmessage("Note/" + user + "@" + note);
 			}
+			
 		} else if (e.getSource() == joinRomm_btn) {
 			System.out.println("방입장버튼 클릭");
 			String joinRoom = (String) roomList_lst.getSelectedValue();
