@@ -45,6 +45,10 @@ public class Client extends JFrame implements ActionListener{
 	
 	//network 자원
 	Socket socket;
+	String ip;
+	String userName;
+	private int port;
+	
 	public Vector<String> getUserVc() {
 		return userVc;
 	}
@@ -57,9 +61,7 @@ public class Client extends JFrame implements ActionListener{
 	public void setRoomVc(Vector<String> roomVc) {
 		this.roomVc = roomVc;
 	}
-	String ip;
-	String userName;
-	private int port;
+	
 	
 	
 	private Vector<String> userVc = new Vector<String>();
@@ -115,10 +117,11 @@ public class Client extends JFrame implements ActionListener{
 	private void loginServer() {
 		try {
 			socket = new Socket(ip,port);			
-			client2 = new Client2();			
-			setVisible(false);
+			client2 = new Client2();				
+			setVisible(false);			
 			client2.setVisible(true);
 			client2.network();
+			
 		} catch (UnknownHostException e) {
 			JOptionPane.showMessageDialog(null, "연결실패!", "알림",
 					JOptionPane.ERROR_MESSAGE);
@@ -155,6 +158,7 @@ public class Client extends JFrame implements ActionListener{
 				}
 				userName = idField.getText().trim();
 				loginServer();
+				setTitle(userName + "님 땡땡톡에 오신걸 환영합니다");
 				
 			}
 			

@@ -15,6 +15,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.StringTokenizer;
 import java.util.Vector;
 
 import javax.swing.ImageIcon;
@@ -227,6 +228,37 @@ class Users extends Thread{
 			}
 		}
 		
+	}
+	private void inmessage(String str) {
+		StringTokenizer st = new StringTokenizer(str,"/");
+		String protocol = st.nextToken();
+		String message = st.nextToken();
+		
+		System.out.println("protocol :" + protocol);
+		System.out.println("message :" + message);
+		
+		if(protocol.equals("Note")) {
+			st = new StringTokenizer(message, "@");
+			String user = st.nextToken();
+			String note = st.nextToken();
+			
+			for (int i = 0; i < vc.size(); i++) {
+				Users u = vc.elementAt(i);
+				if(u.userName.equals(user)) {
+					u.sendmessage("Note/" + userName + "@" + note);
+				}
+			}
+			
+		}
+	}
+	private void sendmessage(String msg) {
+		try {
+			dos.writeUTF(msg);
+			dos.flush();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
 

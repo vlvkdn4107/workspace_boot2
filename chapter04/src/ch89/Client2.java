@@ -29,7 +29,7 @@ public class Client2 extends JFrame implements ActionListener{
 	JPanel panel;	
 	JButton logoutButton;
 	JButton addRoomBt;//방 생성
-	JButton entranceRoomBt;//방 생성
+	JButton entranceRoomBt;//방 입장
 	JButton outRoomBt;//방 나가기
 	JButton whisperBt;//귓속말
 	
@@ -126,7 +126,7 @@ public class Client2 extends JFrame implements ActionListener{
 				public void run() {
 					while(true) {
 						try {
-							String msg; msg = dis.readUTF();
+							String msg = dis.readUTF();
 							 inmessage(msg);
 						} catch (IOException e) {
 							
@@ -138,6 +138,8 @@ public class Client2 extends JFrame implements ActionListener{
 								dis.close();
 								dos.close();
 								client.socket.close();
+								JOptionPane.showMessageDialog(null, "서버가 종료됨!", "알림",
+										JOptionPane.ERROR_MESSAGE);
 								break;
 							} catch (IOException e1) {
 								// TODO Auto-generated catch block
@@ -166,6 +168,19 @@ private void inmessage(String str) {
 		if(protocol.equals("NewUser")){
 			client.getUserVc().add(message);
 			userList.setListData(client.getUserVc());
+		}else if(protocol.equals("OldUser")) {
+			client.getUserVc().add(message);
+			userList.setListData(client.getUserVc());
+		}else if(protocol.equals("Note")) {
+			st = new StringTokenizer(message, "@");
+			String user = st.nextToken();
+			String note = st.nextToken();
+			JOptionPane.showMessageDialog(null, note, user + "로 부터 온 메세지",
+					JOptionPane.CLOSED_OPTION);
+		}else if(protocol.equals("CreatRoom")) {
+			roomName = message;
+			addRoomBt.setEnabled(false);
+			outRoomBt.setEnabled(true);
 		}
 	}
 	private void sendmessage(String msg){
