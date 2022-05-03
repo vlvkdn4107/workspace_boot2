@@ -14,8 +14,9 @@ import javax.swing.JPanel;
 public class LottoFrame2 extends JFrame {
 
 	private JButton startBtn;
-	private int[] lotto = new int[LottoNumber.LOTTO_NUM_SIZE];
 	private LottoNumber lottoNumber; // 로또 넘버 클래스를 포합관계로 넣는다.
+	private int[] lotto = new int[lottoNumber.LOTTO_NUM_SIZE];
+	
 	private LottoPanel lottoPanel;
 
 	public LottoFrame2() {

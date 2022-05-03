@@ -52,7 +52,7 @@ public class UserSocket extends Thread {
 						System.out.println("Server <<<<< client" + msg);
 						firstEnter(msg);
 						
-						
+						mContext.getTextArea().append(userName + ":" + msg + "\n");  // userName 자체가 newUserName@1 이다??
 						mContext.getServerService().inmessage(msg);
 	
 					} catch (IOException e) {
@@ -69,7 +69,7 @@ public class UserSocket extends Thread {
 		if(this.userName == "") {
 			roomName = "waitingRoom";
 			this.userName = userName;
-			mContext.getTextArea().append("[" + userName + "]님이 입장했습니다.\n");
+//			mContext.getTextArea().append("[" + userName + "]님이 입장했습니다.\n");
 		}else {
 			return;
 		}

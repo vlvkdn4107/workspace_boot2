@@ -20,7 +20,10 @@ import javax.swing.border.EmptyBorder;
 
 import client.ClientInterface;
 import client.ClientService;
+import lombok.Getter;
 
+
+@Getter
 public class ClientView2 extends JFrame implements ActionListener{
 
 	private ClientView mContext;
@@ -49,12 +52,7 @@ public class ClientView2 extends JFrame implements ActionListener{
 	
 	
 	
-	public JTextArea getTextArea() {
-		return textArea;
-	}
-	public void setTextArea(JTextArea textArea) {
-		this.textArea = textArea;
-	}
+	
 	public ClientView2(ClientView mContext, ClientService clientService) {
 		this.mContext = mContext;
 		System.out.println(mContext.getIdField().getText());
@@ -98,7 +96,7 @@ public class ClientView2 extends JFrame implements ActionListener{
 		
 		ScrollPane scroll = new ScrollPane();
 		scroll.setBounds(120, 10, 140, 100);
-		userList = new JList();
+		userList = new JList<String>();
 		scroll.add(userList);
 		panel.add(scroll);
 		
@@ -120,8 +118,8 @@ public class ClientView2 extends JFrame implements ActionListener{
 		panel.add(button);
 		
 		
-		userListVector.add(mContext.getIdField().getText());
-		userList.setListData(userListVector);
+//		userListVector.add(mContext.getIdField().getText());
+		//userList.setListData(userListVector);
 		
 		setVisible(false);
 	}
@@ -144,8 +142,10 @@ public class ClientView2 extends JFrame implements ActionListener{
 //			}
 		}else if(e.getSource() == button) {
 			String msg = textField.getText().trim();
+			System.out.println("전송 버튼 클릭했을때 : " +msg);
 			// 멤버 변수인 name 에 값을 넣는 코드가 없다.
-			textArea.getText().trim();
+			
+			
 			clientService.chat(msg);
 			
 			

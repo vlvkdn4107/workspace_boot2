@@ -5,6 +5,8 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 
+import javax.swing.JOptionPane;
+
 import view.ServerView;
 
 
@@ -12,6 +14,7 @@ public class UserSocket extends Thread {
 
 	private ServerView mContext;
 	private String userName;
+	private String roomName;
 	private Socket userSocket;
 	private DataInputStream dis;
 	private DataOutputStream dos;
@@ -20,6 +23,7 @@ public class UserSocket extends Thread {
 	public UserSocket(Socket userSocket, ServerView mContext) {
 		this.userSocket = userSocket;
 		this.mContext = mContext;
+		this.userName = "";
 		
 		// 기능 구현 
 		// 새로운 유저가 왔다라고 알려야 한다. 
@@ -27,9 +31,13 @@ public class UserSocket extends Thread {
 		
 		// 서버 서비스가 관리하는 소켓리스에 나 자신을 더해 준다.!!!
 		mContext.getServerService().getUserSockets().add(this);
+		
 	}
 	
-
+	
+	
+	
+	
 	@Override
 	public void run() {
 		new Thread(new Runnable() {
@@ -39,14 +47,13 @@ public class UserSocket extends Thread {
 					try {
 						dis = new DataInputStream(userSocket.getInputStream());
 						dos = new DataOutputStream(userSocket.getOutputStream());
-						userName = dis.readUTF();
-
-						mContext.getTextArea().append("[" + userName + "]님이 입장했습니다.\n");
 						String msg = dis.readUTF();
-						System.out.println("user socket msg : " + msg);
+						System.out.println("Server <<<<< client" + userName);
+						firstEnter(msg);
+						
+						
 						mContext.getServerService().inmessage(msg);
-
-						// 메세지 를 어디에 넣을건지 만들어야된다
+	
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -56,11 +63,22 @@ public class UserSocket extends Thread {
 			}
 		}).start();
 	}
+	
+	public void firstEnter(String userName) {
+		if(this.userName == "") {
+			roomName = "waitingRoom";
+			this.userName = userName;
+			mContext.getTextArea().append("[" + userName + "]님이 입장했습니다.\n");
+		}else {
+			return;
+		}
+	}
 
 	public void sendmessage(String msg) {
 		try {
 			dos.writeUTF(msg);
 			dos.flush();
+			System.out.println(userName + " <<<<<< " + msg);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

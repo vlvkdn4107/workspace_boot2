@@ -103,7 +103,9 @@ public class ServerView extends JFrame implements ActionListener {
 		// 포트 텍스트 필드
 		textField = new JTextField();
 		textField.setBounds(80, 320, 293, 30);
+		textField.setText("10000");
 		panel.add(textField);
+		
 
 		logbutton = new JButton("로그 출력");
 		logbutton.setBounds(25, 380, 100, 30);

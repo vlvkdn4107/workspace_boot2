@@ -154,6 +154,8 @@ public class Server extends JFrame implements ActionListener {
 						UserInfomation useInfo = new UserInfomation(socket);//유저 인포생성루 소켓을 넣음
 						// 각각의 스레드를 등록시켜준다.
 						useInfo.start();
+						
+						//여기서 백터에 등록 하지 않음!!!!
 					} catch (IOException e) {
 						textArea.append("서버가 중지됨! 다시 스타트 버튼을 눌러주세요\n");
 						break;
@@ -204,11 +206,15 @@ public class Server extends JFrame implements ActionListener {
 				textArea.append("[[" + nickName + "]] 입장\n");
 
 				// 기존사용자들에게 신규 유저의 접속을 알린다.
-				broadCast("NewUser/" + nickName);
+				broadCast("NewUser/" + nickName);//이시점에는 c1한테만 메세지가 전달된다.
+				//클라1 클라2가 실행 시점
+				
+				
 
 				// 자신에게 기존 사용자들을 알린다.
 				for (int i = 0; i < vc.size(); i++) {//유저
 					UserInfomation uinf = vc.elementAt(i);//get으로 사용해도됨
+					//브로드 캐스트가 아님 x 나와 연결 되어있는 stream을 통해서 보낸다...
 					sendmessage("OldUser/" + uinf.nickName);
 				}
 				for (int i = 0; i < vc_room.size(); i++) {//방
@@ -217,7 +223,7 @@ public class Server extends JFrame implements ActionListener {
 				}
 
 				// 사용자에게 자신을 알린후 벡터에 자신을 추가한다.
-				vc.add(this);
+				vc.add(this);//자신을 알린후 백터에 자신을 추가
 
 			} catch (IOException e) {
 				JOptionPane.showMessageDialog(null, "Stream설정에러!", "알림",
@@ -332,7 +338,7 @@ public class Server extends JFrame implements ActionListener {
 			}
 		}
 
-		private void sendmessage(String msg) {
+		private void sendmessage(String msg) { //클라1와 서버1만 개별적으로 보내는 메세지
 			try {
 				dos.writeUTF(msg);
 				dos.flush();

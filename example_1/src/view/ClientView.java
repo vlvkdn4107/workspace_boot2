@@ -21,6 +21,7 @@ import lombok.Setter;
 public class ClientView extends JFrame implements ActionListener {
 
 	private ClientView mContext = this;
+	
 	private ClientView2 clientView2;
 	private ClientService clientService;
 
@@ -37,7 +38,7 @@ public class ClientView extends JFrame implements ActionListener {
 	private int port;
 	
 
-	Vector<String> users;
+	//Vector<String> users;
 
 	public ClientView() {
 		init();
@@ -69,6 +70,7 @@ public class ClientView extends JFrame implements ActionListener {
 		portField = new JTextField();
 		portField.setBounds(30, 300, 325, 30);
 		mainPanel.add(portField);
+		portField.setText("10000");
 
 		idLabel = new JLabel("ID");
 		idLabel.setBounds(30, 330, 70, 30);
@@ -76,6 +78,7 @@ public class ClientView extends JFrame implements ActionListener {
 		idField = new JTextField();
 		idField.setBounds(30, 360, 325, 30);
 		mainPanel.add(idField);
+		idField.setText("1");
 
 		loginBt = new JButton("로그인");
 		loginBt.setBounds(254, 400, 100, 30);
@@ -118,10 +121,12 @@ public class ClientView extends JFrame implements ActionListener {
 
 					setVisible(false);
 					clientView2.setVisible(true);
-
+					String msg = idField.getText().trim();
+					//clientService.setUserName(msg);
 					clientService.connectServer();
 					// todo 삭제 요망
-					System.out.println(idField.getText().trim());
+					
+					
 					System.out.println("마지막 확인 :::  " + clientService.getUserName());
 					// 
 				} catch (Exception e1) {

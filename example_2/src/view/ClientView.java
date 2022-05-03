@@ -134,12 +134,10 @@ public class ClientView extends JFrame implements ActionListener {
 					clientView2 = new ClientView2(mContext, clientService);
 					
 
-					// clientService.setClientView2(clientView2);
 
 					setVisible(false);
 					clientView2.setVisible(true);
 					String msg = idField.getText().trim();
-					//clientService.setUserName(msg);
 					clientService.connectServer();
 					// todo 삭제 요망
 					

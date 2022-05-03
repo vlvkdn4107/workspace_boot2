@@ -45,7 +45,6 @@ public class ServerService implements ServerInterface {
 	public void starNetwork(int port) {
 		try {
 			serverSocket = new ServerSocket(port);
-
 			System.out.println("startNetwork서버 시작!");
 			mContext.getTextArea().append("서버를 시작합니다.\n");
 			connect();
@@ -60,7 +59,6 @@ public class ServerService implements ServerInterface {
 	@Override
 	public void connect() {
 		Thread th = new Thread(new Runnable() {
-
 			@Override
 			public void run() {
 				while (true) {
@@ -70,6 +68,7 @@ public class ServerService implements ServerInterface {
 						socket = serverSocket.accept();
 						
 						UserSocket user = new UserSocket(socket, mContext);
+						System.out.println("sssdsfs");
 						user.start();
 
 					} catch (IOException e) {
@@ -108,65 +107,23 @@ public class ServerService implements ServerInterface {
 		protocol[0] = messageHd;
 		protocol[1] = messageBd;
 //		runServer(protocol);
-
+//
 		if ("newUser".equals(protocol[0])) {
 			System.out.println("inmessage @@@@@@@@@@@@@");
 			// 기존 사용자들한테 누가 들어 왔는지 알여 주면 된다. (브로드 캐스트)
 			// msg = "newUser@유저이름 
+			for (UserSocket user : userSockets) {
+				if(user.getName().equals("")) {
+					user.firstEnter(protocol[1]);
+				}
+			}
 			broadCast(msg);
-		} else if("Catting".equals(protocol[0])) {
+		} else 	if("Catting".equals(protocol[0])) {
 			System.out.println("서버에서 전체 메세지 보냄 " + msg);
 			broadCast(msg);
 		}
-
-//		if(chcheck == true) {
-//			if(protocol.equals(null));
-//			msg= st.nextToken();
-//			for (int i = 0; i < serverData.getUserlist().size(); i++) {
-//				User u = serverData.getUserlist().get(i);
-//				if(u.getUserName().equals(message)) {
-//					broadCast(u.getUserName() + ":" + msg);
-//				}
-//			}
-//			
-//		}
-
-	}
-
-//	public void runServer(String[] partedMs) {
-//		/*  ex>   admission/nickname
-//		 *  ex>   Message/reciver>caller@contents
-//		 *   (User)protocal -> inmessage() < admission , nickname >
-//		 *   
-//		 */
-//		String[] protocol = partedMs;
-//		dataList = ServerData.getinstance();
-//		switch (protocol[0]) {
-//		case "uewUser/":		
-//			dataList.userName("").setUserName(protocol[1]);
-//			String msg = "Newuser/" + protocol[1];
-//			System.out.println(msg);			
-//			broadCast(msg);
-//			DataRecept(protocol[1]);
-//			break;
-//		case "OldUser/":
-//			DataRecept(protocol[1]);
-//			// OledUser/name
-//			break;
-//		case "Chatting/":
-//			chatting(protocol[1]);
-//			break;
-//		case "Whisper/":
-//			//Whisper/userName
-//			break;
-//		default:
-//			break;
-//		}
-//	}
-	@Override
-	public void chatting(String msg) {
-		StringTokenizer st = new StringTokenizer(msg, "@");
-		String userName = st.nextToken();
+		
+		
 
 	}
 

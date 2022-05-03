@@ -1,5 +1,7 @@
 package ch02;
 
+import java.awt.BorderLayout;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
@@ -22,17 +24,17 @@ public class MyFrame1 extends JFrame{
 	
 	private void initDate() {
 		setTitle("BorderLayout Test");
-		size(400, 400);
+		setSize(400, 400);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		borderLayout = new BorderLayout();
 		
 		
 		for (int i = 0; i < buttons.length; i++) {
-			buttons[i] = new JButton(titles[i]);
+			buttons[i] = new JButton(title[i]);
 		}
 	}
 	private void setInitLayout() {
-		setVisu
+		setVisible(true);
 		setLayout(borderLayout);
 		
 		

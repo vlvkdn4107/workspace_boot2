@@ -31,11 +31,11 @@ public class BorderLayoutEx extends JFrame{
 		button1 = new JButton("button1");
 		button2 = new JButton("button2");
 		button3 = new JButton("button3");
-		borderLayout = new Border();
+		borderLayout = new BorderLayoutEx();
 	}
 	private void setInitLayout() {
 		this.setLayout((LayoutManager) borderLayout);
-		this.add(button1, bo.NORTH);
+		this.add(button1, BorderLayout.NORTH);
 		this.add(button2, BorderLayout.SOUTH);
 		this.add(button3, BorderLayout.CENTER);
 	}

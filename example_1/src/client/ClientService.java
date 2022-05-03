@@ -56,33 +56,34 @@ public class ClientService implements ClientInterface {
 
 	@Override
 	public void network() {
-
+		
 		try {
 			System.out.println("networkOK");
 			is = socket.getInputStream();
 			dis = new DataInputStream(is);
 			os = socket.getOutputStream();
 			dos = new DataOutputStream(os);
+
+			userName = mContext.getIdField().getText().trim();
+			sendmessage("newUser@" + userName);
 			// this.userName = clientView.getIdField().getText().trim();
 
-			Thread cht = new Thread(new Runnable() {
+			new Thread(new Runnable() {
 				@Override
 				public void run() {
 					while (true) {
 						try {
 							String msg = dis.readUTF();
-							inmessage(msg);
+							System.out.println(msg + " <<<<<<<  Server");
+							getLog(msg);
+							
 						} catch (IOException e) {
 							JOptionPane.showMessageDialog(null, "서버가 종료됨!", "알림", JOptionPane.ERROR_MESSAGE);
 						}
 					}
 
 				}
-			});
-			cht.start();
-
-			newUser(userName);
-
+			}).start();
 			// sendmessage(userName);
 
 		} catch (IOException e) {
@@ -91,19 +92,13 @@ public class ClientService implements ClientInterface {
 
 	}
 
-	public void newUser(String msg) {// 작동 @@
-		msg = "newUser@" + userName;
-		System.out.println("-------------------");
-		System.out.println(msg);
-		System.out.println("-------------------");
-		sendmessage(msg);
-	}
+
 
 	public void chat(String msg) {
 		// 멤버 변수 userName
 
 		System.out.println("@@@@chat@@@@" + userName);
-		msg = "Catting@" + msg;
+		msg = "Catting@" + userName + " : " + msg + "\n";
 		System.out.println("chat userName" + userName);
 		System.out.println("chat :" + msg);
 
@@ -123,7 +118,7 @@ public class ClientService implements ClientInterface {
 	}
 
 	@Override
-	public String[] getLog(String msg) {
+	public void getLog(String msg) {
 		StringTokenizer st = new StringTokenizer(msg, "@");
 		String logHd = st.nextToken();
 		String logBd = st.nextToken();
@@ -133,67 +128,39 @@ public class ClientService implements ClientInterface {
 		protocol[0] = logHd;
 		protocol[1] = logBd;
 
-		return protocol;
+		runServer(protocol);
 
 	}
 
 	@Override
-	public void runServer() {
-		new Thread(new Runnable() {
-			@Override
-			public void run() {
-				while (true) {
-					try {
-
-						String msg = dis.readUTF();
-						System.out.println(userName + "@@@" + msg);
-						String[] protocal = getLog(msg);
-
-						switch (protocal[0]) {
-						case "uewUser":
-							// mContext.userUpdate(protocal[1]);
-
-							break;
-						case "OldUser":
-							// mContext.userUpdate(protocal[1]);
-							break;
-							
-						case "Catting":
-							System.out.println("-------------");
-							System.out.println(protocal[0]);
-							System.out.println(protocal[1]);
-							System.out.println("-------------");
-							clientView2.getTextArea().append(protocal[1]);
-							break;
-						default:
-							break;
-						}
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
-
-			}
-		}).start();
-
-	}
-
-	@Override
-	public void inmessage(String msg) {
-		StringTokenizer st = new StringTokenizer(msg, "@");
-		String protocol = st.nextToken();
-		String message = st.nextToken();
-
-		if (protocol.equals("Catting")) {
-			System.out.println("여기에 들어 와야해 !!!!");
-			 
-			mContext.getClientView2().getTextArea().append(message);
-			//clientView2.getTextArea().append(message + "@" + msg + "@");
+	public void runServer(String[] protocal) {
+		
+		switch (protocal[0]) {
+		case "newUser":
+			System.out.println(mContext.getClientView2().getUserListVector().size());
+			System.out.println("프로토콜 @@@@@@@@@@@@@@@@@@@@@@@@@uewUser");
+			mContext.getClientView2().getTextArea().append(protocal[0] + protocal[1]);
+			mContext.getClientView2().getUserListVector().add(protocal[1]);
 			
-		} else if (protocol.equals("newUser")) {
-			runServer();
+			for (String string : mContext.getClientView2().getUserListVector()) {
+				System.out.println(string);
+			}
+			
+			mContext.getClientView2().getUserList().setListData(mContext.getClientView2().getUserListVector());
+			break;
+		case "OldUser":
+			mContext.getClientView2().getTextArea().append(protocal[0] + protocal[1]);
+			mContext.getClientView2().getUserListVector().add(protocal[1]);
+			mContext.getClientView2().getUserList().setListData(mContext.getClientView2().getUserListVector());
+			break;
 
+		case "Catting":
+			clientView2.getTextArea().append(protocal[1]);
+			break;
+		default:
+			break;
 		}
 	}
+
+	
 }
