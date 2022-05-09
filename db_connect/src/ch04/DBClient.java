@@ -15,16 +15,16 @@ public class DBClient {
 	
 	private Connection conn;
 	
-	private static DBClient Client;
+	private static DBClient client;
 	
 	private DBClient() {
 		
 	}
 	public static DBClient getInstance() {
-		if(Client == null) {
-			Client = new DBClient();
+		if(client == null) {
+			client = new DBClient();
 		}
-		return Client;
+		return client;
 	}
 	
 	public Connection getConnection() {

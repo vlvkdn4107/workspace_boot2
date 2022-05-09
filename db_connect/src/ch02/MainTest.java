@@ -8,7 +8,7 @@ import ch03.UserDto;
 public class MainTest {
 
 	public static void main(String[] args) {
-		MemberInfoDao memberInfoDao = new MemberInfoDao();
+//		MemberInfoDao memberInfoDao = new MemberInfoDao();
 		ShopDbDao shopDbDao = new ShopDbDao(); 
 		ArrayList<UserDto> data = shopDbDao.innerjoin1();
 		System.out.println(data);

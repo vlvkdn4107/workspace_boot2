@@ -6,7 +6,8 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/example_1/lib/lombok.jar"/>
-	<classpathentry kind="lib" path="lib/gson-2.8.5.jar"/>
+	<classpathentry kind="lib" path="C:/JAVA/Jar/lombok.jar"/>
+	<classpathentry kind="lib" path="C:/JAVA/Jar/mysql-connector-java-8.0.21.jar"/>
+	<classpathentry kind="lib" path="C:/JAVA/Jar/gson-2.8.5.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
