@@ -19,7 +19,7 @@ public class MemberInfoDao implements ImemberinfoDao{
 		//초기화
 		dbClient = DBClient.getInstance();
 		conn = dbClient.getConnection();
-	}
+	} 
 	
 	
 	
@@ -40,7 +40,7 @@ public class MemberInfoDao implements ImemberinfoDao{
 		ResultSet rs = null;
 		
 		
-		try {			
+		try {			 
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(sql);
 			
