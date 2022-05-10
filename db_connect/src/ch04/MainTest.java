@@ -10,10 +10,15 @@ public class MainTest {
 		EmployeesDao employeesDao = new EmployeesDao();
 //		ArrayList<EmployeesDto> data = employeesDao.select();
 //		System.out.println(data);
-//		employeesDao.innerJoin();
-//		employeesDao.leftJoin1();
-//		employeesDao.leftJoin2();
-		employeesDao.rightJoin1();
+//		ArrayList<EmployeesSelectDto> data = employeesDao.employeesSelect("Marketing", "9999-01-01");
+//		System.out.println(data);
+//		ArrayList<EmployeesSelectDto> data = employeesDao.managerSelect("Finance");
+//		System.out.println(data);
+//		ArrayList<TitleEmployeesDto> data = employeesDao.titleEmployees("Senior Engineer");
+//		System.out.println(data);
+		ArrayList<GenderSelectDto> data = employeesDao.genderSelecet("M");
+		System.out.println(data);
+		
 	}
 
 }

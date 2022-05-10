@@ -7,10 +7,10 @@ public class MainTest {
 	public static void main(String[] args) {
 
 		EmployeesDao2 employeesDao2 = new EmployeesDao2();
-		ArrayList<EmployeesDto2> data = employeesDao2.innerJoin1();
-		System.out.println(data);
-		ArrayList<EmployeesDto2> data1 = employeesDao2.innerJoin2();
-		System.out.println(data1);
+//		ArrayList<EmployeesDto2> data = employeesDao2.innerJoin1();
+//		System.out.println(data);
+		
+		employeesDao2.inline1();
 		
 	}
 

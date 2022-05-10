@@ -9,12 +9,12 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class EmployeesDto {
+public class EmployeesSelectDto {
 
-	private int emp_no;
-	private String first_name;
-	private String last_name;
-	private String gender;
-	
+	private String dept_no;
+	private String dept_name;
+	private String emp_no;
+	private String from_date;
+	private String to_date;
 	
 }
