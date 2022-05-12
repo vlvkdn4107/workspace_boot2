@@ -1,4 +1,4 @@
-package ch06;
+package DBDao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

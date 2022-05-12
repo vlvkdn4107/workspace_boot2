@@ -1,4 +1,4 @@
-package ch06;
+package DBDto;
 
 public class UserDto {
 
